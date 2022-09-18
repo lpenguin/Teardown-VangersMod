@@ -1,0 +1,6 @@
+<scene version="1.1.0" shadowVolume="150 20 150">
+	<script file="MOD/lua/uimanager.lua" param0="type=1"/>
+	<voxbox pos="-72.9 -7.5 -92.5" texture="1" size="1500 40 1500"/>
+	<spawnpoint/>
+</scene>
+

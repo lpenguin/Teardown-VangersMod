@@ -1,0 +1,7 @@
+<scene version="1.1.0">
+	<spawnpoint name="Player" pos="2.2 8.4 1.3"/>
+	<instance pos="15.0 1.9 0.0" file="MOD/assets/vehicle/car/suv1.xml"/>
+	<script file="MOD/lua/bodiesmanager.lua"/>
+	<body dynamic="false"/>
+</scene>
+

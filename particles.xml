@@ -1,0 +1,9 @@
+<scene version="1.1.0">
+	<spawnpoint name="player" pos="0.0 2.6 -3.2"/>
+	<voxbox pos="-20.0 0.0 -20.0" size="400 20 400"/>
+	<script pos="0.0 2.9 0.0" file="MOD/lua/particleemitter.lua">
+		<location/>
+	</script>
+	<script file="main.lua"/>
+</scene>
+

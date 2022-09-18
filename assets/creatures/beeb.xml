@@ -1,0 +1,6 @@
+<prefab version="1.1.0">
+	<group name="instance=MOD/assets/creatures/beeb.xml" pos="2.4 0.0 0.0" rot="0.0 0.0 0.0">
+		<vox tags="unbreakable" file="MOD/assets/creatures/beeb.vox"/>
+	</group>
+</prefab>
+

@@ -1,0 +1,29 @@
+<prefab version="1.1.0">
+	<group name="instance=MOD/assets/vehicle/m1.xml" pos="70.4 -18.7 0.0" rot="0.0 0.0 0.0">
+		<vehicle>
+			<body dynamic="true">
+				<vox pos="0.0 0.0 0.0" file="MOD/assets/m1_assembled.vox" object="Body">
+					<group name="wheels">
+						<wheel name="Wheel 1" pos="1.1 0.2 -1.7" drive="1" steer="1">
+							<vox pos="0.0 -0.75 0.05" file="MOD/assets/m1_assembled.vox" object="Wheel 1"/>
+						</wheel>
+						<wheel name="Wheel 2" pos="-1.1 0.2 -1.7" drive="1" steer="1">
+							<vox pos="0.0 -0.75 0.05" file="MOD/assets/m1_assembled.vox" object="Wheel 2"/>
+						</wheel>
+						<wheel name="Wheel 3" pos="-1.2 0.2 1.5" drive="1" steer="0">
+							<vox pos="0.0 -0.75 0.05" file="MOD/assets/m1_assembled.vox" object="Wheel 3"/>
+						</wheel>
+						<wheel name="Wheel 4" pos="1.2 0.2 1.5" drive="2" steer="0">
+							<vox pos="0.0 -0.75 0.05" file="MOD/assets/m1_assembled.vox" object="Wheel 4"/>
+						</wheel>
+					</group>
+					<group name="locations">
+						<location name="player" tags="player" pos="0.0 2.6 0.0"/>
+						<location name="exhaust" tags="exhaust" pos="0.0 1.4 3.4" rot="200 0 0"/>
+					</group>
+				</vox>
+			</body>
+		</vehicle>
+	</group>
+</prefab>
+

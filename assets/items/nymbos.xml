@@ -1,0 +1,6 @@
+<prefab version="1.1.0">
+	<group name="instance=MOD/assets/items/nymbos.xml" tags="unbreakable" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0">
+		<vox tags="unbreakable" file="MOD/assets/items/nymbos.vox"/>
+	</group>
+</prefab>
+

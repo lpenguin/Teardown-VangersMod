@@ -1,0 +1,10 @@
+<scene version="1.1.0">
+	<spawnpoint pos="2.8 17.6 7.1"/>
+	<body pos="0.0 0.0 0.0" dynamic="false">
+		<voxscript pos="0.0 0.0 0.0" file="MOD/lua/heightmap.lua">
+			<parameters scale="200" hollow="1" file="MOD/vmcexport/fostral1/hm/height_101x6.png"/>
+		</voxscript>
+	</body>
+	<script file="main.lua"/>
+</scene>
+
