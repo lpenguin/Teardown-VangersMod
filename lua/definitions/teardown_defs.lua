@@ -264,3 +264,19 @@ function SetPlayerVelocity(veclocity) end
 ---@meta
 ---@return number
 function GetTime() end
+
+---@meta
+---@param key string
+---@return boolean
+function InputPressed(key) end
+
+---@meta
+---@param key string
+---@return boolean
+function InputReleased(key) end
+
+---@meta
+---@param body Handle
+---@param position Vec3
+---@param direction Vec3
+function ApplyBodyImpulse(body, position, direction) end

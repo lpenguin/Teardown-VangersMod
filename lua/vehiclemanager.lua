@@ -31,7 +31,6 @@ function tick(dt)
 			if energy <= 0.001 then
 				jumpPressed = false
 				forcedToJump = true
-				-- DebugPrint('fj')
 			end
 		end
 
@@ -40,8 +39,6 @@ function tick(dt)
 			jumpPressed = false
 			local vBody = GetVehicleBody(v)
 			local vTr = GetBodyTransform(vBody)
-
-			local cm = GetBodyCenterOfMass(vBody)
 
 			local r = QuatRotateVec(vTr.rot, Vec(0, 0, -1))
 			local dir = VecNormalize(VecAdd(r, Vec(0, 1, 0)))
