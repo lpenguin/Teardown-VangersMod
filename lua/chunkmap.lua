@@ -209,6 +209,7 @@ local function UnloadChunk(chunk)
 		return
 	end
 	SetTag(chunk.data.body, "invisible")
+	SetTag(chunk.data.shape, "invisible")
 end
 
 
@@ -218,6 +219,7 @@ local function LoadChunk(chunk)
 		InstantiateChunk(chunk)
 	else
 		RemoveTag(chunk.data.body, "invisible")
+		RemoveTag(chunk.data.shape, "invisible")
 	end
 
 end
