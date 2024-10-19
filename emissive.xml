@@ -1,8 +1,0 @@
-<scene version="1.1.0">
-	<voxbox pos="-2.3 -2.6 -1.4" size="100 10 100"/>
-	<spawnpoint pos="0.0 -0.2 3.0"/>
-	<vox tags="emissive" pos="0.0 -9.2 0.0" file="MOD/assets/monu2.vox"/>
-	<script file="main.lua"/>
-	<script file="MOD/lua/emissivescale.lua"/>
-</scene>
-

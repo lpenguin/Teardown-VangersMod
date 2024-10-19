@@ -1,4 +1,4 @@
-local map_file = 'MOD/vmcexport/minimap/fostral/map.png'
+local mapFile = 'MOD/vmcexport/minimap/fostral/map.png'
 
 local playerX = 0
 local playerZ = 0
@@ -51,8 +51,7 @@ function draw()
 	local leftMargin = 0
 	local topMargin = 0
 
-	local w, h = UiGetImageSize(map_file)
-
+	local w, h = UiGetImageSize(mapFile)
 	if left > w - minimapScaledWidth  then
 		left =  left - w
 	end
@@ -90,7 +89,7 @@ function draw()
 		UiAlign(aligh)
 		UiScale(scale)
 		UiImage(
-			map_file, 
+			mapFile, 
 			left, 
 			top, 
 			left + minimapScaledWidth - leftMargin, 
@@ -106,7 +105,7 @@ function draw()
 		UiAlign(aligh)
 		UiScale(scale)
 		UiImage(
-			map_file, 
+			mapFile, 
 			w - leftMargin, 
 			top, 
 			math.min(w, w - leftMargin + minimapScaledWidth), 
@@ -123,7 +122,7 @@ function draw()
 		UiAlign(aligh)
 		UiScale(scale)
 		UiImage(
-			map_file, 
+			mapFile, 
 			left, 
 			h - topMargin, 
 			left + minimapScaledWidth - leftMargin, 
@@ -139,7 +138,7 @@ function draw()
 		UiAlign(aligh)
 		UiScale(scale)
 		UiImage(
-			map_file, 
+			mapFile, 
 			w - leftMargin,
 			h - topMargin, 
 			math.min(w, w - leftMargin + minimapScaledWidth),
