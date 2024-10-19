@@ -13,7 +13,7 @@ local MapChunkSizeZ = 128
 
 local ChunksVisibleArea = 8
 local ChunksUnloadAreaX = 7
-local ChunksUnloadAreaZ = 10
+local ChunksUnloadAreaZ = 8
 
 local ChunksRemoveAreaZ = 18
 
@@ -32,10 +32,12 @@ local Debug = false
 ---@type Handle[]
 local CycledBodies = {}
 
-ChunksDirectory = "MOD/vmcexport/fostral/"
+ChunksDirectory = "MOD/vmcexport/fostral-small/"
 -- ChunksDirectory = GetStringParam("ChunksDirectory", ChunksDirectory)
 
 ChunkManager = {}
+
+Shifted = false
 
 ---@param v Vec3
 ---@return string
@@ -343,8 +345,6 @@ local function LoadQueuedChunks(playerChunkX, playerChunkZ)
 
 end
 
-local shifted = false
-
 function ShiftWorld(playerPos)
 	local playerChunkX = math.floor(playerPos[1] / ChunkSizeX)
 	local playerChunkZ = math.floor(playerPos[3] / ChunkSizeZ)
@@ -372,8 +372,8 @@ function ShiftWorld(playerPos)
 		shiftZ = -playerChunkZ
 	end
 
-	if shiftX ~= 0 or shiftZ ~= 0 and not shifted then
-		-- shifted = true
+	if shiftX ~= 0 or shiftZ ~= 0 then
+		Shifted = true
 		Print('Shifting world ' .. shiftX .. ' ' .. shiftZ)
 
 		WorldOriginX = WorldOriginX + shiftX
@@ -397,19 +397,18 @@ function ShiftWorld(playerPos)
 		local worldBody = GetWorldBody()
 
 		local bodes = FindBodies('', true)
-		-- DebugPrint(tostring(bodes))
-		for i, body in pairs(bodes) do
-			if body ~= worldBody then
+		for _, body in pairs(bodes) do
+			if body ~= worldBody and not HasTag(body, 'invisible') then
 				local bodyTransform = GetBodyTransform(body)
 				local bodyPos = bodyTransform.pos
 	
-				-- DebugPrint('s b '.. body .. ' pos=' .. VecString(bodyPos) .. ' desc=' .. GetDescription(body))
-				local vehicle = GetBodyVehicle(body)
-				local dynamic = IsBodyDynamic(body)
-				if vehicle == 0 and dynamic then
-					-- DebugPrint('Set body dynamic false: ' .. body)
-					SetBodyActive(body, false)
-				end
+				-- -- DebugPrint('s b '.. body .. ' pos=' .. VecString(bodyPos) .. ' desc=' .. GetDescription(body))
+				-- local vehicle = GetBodyVehicle(body)
+				-- local dynamic = IsBodyDynamic(body)
+				-- if vehicle == 0 and dynamic then
+				-- 	-- DebugPrint('Set body dynamic false: ' .. body)
+				-- 	SetBodyActive(body, false)
+				-- end
 				bodyTransform.pos = Vec(
 					bodyPos[1] + shiftX * ChunkSizeX,
 					bodyPos[2],
@@ -461,10 +460,13 @@ function ChunkManager.update(playerPos)
 		Watch('Player.Chunk.Filename', chunk.fileName)
 	end
 	ShiftWorld(playerPos)
-	PreloadVisibleChunks(playerChunkX, playerChunkZ)
-	LoadQueuedChunks(playerChunkX, playerChunkZ)
-	UnloadInvisibleChunks(playerChunkX, playerChunkZ)
-	RemoveTooFarChunks(playerChunkX, playerChunkZ)
+	if not Shifted then
+		PreloadVisibleChunks(playerChunkX, playerChunkZ)
+		LoadQueuedChunks(playerChunkX, playerChunkZ)
+		UnloadInvisibleChunks(playerChunkX, playerChunkZ)
+		RemoveTooFarChunks(playerChunkX, playerChunkZ)			
+	end
+	Shifted = false
 end
 
 
@@ -491,6 +493,28 @@ end
 
 function tick()
 
+	if InputPressed("P") then
+		DebugPrint("Toggling...")
+		-- for id, chunk in pairs(Chunks) do
+		-- 	if chunk.status == ChunkStatus.loaded and chunk.data ~= nil then
+		-- 		-- RemoveTag(chunk.data.shape, "invisible")
+		-- 		local tr = GetBodyTransform(chunk.data.body)
+		-- 		tr.pos = VecAdd(tr.pos, Vec(1200.8, 0, 0))
+		-- 		SetBodyTransform(chunk.data.body, tr)
+		-- 	end
+		-- end
+	end
+	if InputPressed("O") then
+		DebugPrint("Toggling...")
+		-- for id, chunk in pairs(Chunks) do
+		-- 	if chunk.status == ChunkStatus.loaded and chunk.data ~= nil then
+		-- 		-- SetTag(chunk.data.shape, "invisible")
+		-- 		local tr = GetBodyTransform(chunk.data.body)
+		-- 		tr.pos = VecAdd(tr.pos, Vec(-1200.8, 0, 0))
+		-- 		SetBodyTransform(chunk.data.body, tr)
+		-- 	end
+		-- end
+	end
 	if InputReleased("R") then
 		Debug = not Debug
 	end
@@ -610,6 +634,9 @@ function tick()
 		end
 	end
 
-	ChunkManager.update(playerPos)
+	-- if not Shifted then
+		ChunkManager.update(playerPos)
+	-- end
+	
 
 end
