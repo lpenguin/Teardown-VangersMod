@@ -114,6 +114,10 @@ ChunkStatus = {
 	unloaded = 'unloaded',
 }
 
+---@class ChunkData
+---@field body Handle
+---@field shape Handle
+
 ---@class Chunk
 ---@field fileName string
 ---@field indexX integer
@@ -121,7 +125,7 @@ ChunkStatus = {
 ---@field realIndexX integer
 ---@field realIndexZ integer
 ---@field status ChunkStatus
----@field data? {body: Handle, shape: Handle}
+---@field data? ChunkData
 
 Chunk = {}
 
