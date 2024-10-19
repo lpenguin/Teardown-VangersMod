@@ -349,31 +349,25 @@ function ShiftWorld(playerPos)
 	local playerChunkX = math.floor(playerPos[1] / ChunkSizeX)
 	local playerChunkZ = math.floor(playerPos[3] / ChunkSizeZ)
 
-	-- DebugPrint('po ' .. playerChunkX .. ' ' .. playerChunkZ)
-
 	local shiftX = 0
 	local shiftZ = 0
 
 	if playerChunkX >= ShiftAreaX then
-		-- shiftX = -ShiftAreaX --  - (ShiftAreaX - playerChunkX)
 		shiftX = -playerChunkX
 		shiftZ = -playerChunkZ
 	end
 
 	if playerChunkX <= -ShiftAreaX then
-		-- shiftX = ShiftAreaX -- + (ShiftAreaX - playerChunkX)
 		shiftX = -playerChunkX
 		shiftZ = -playerChunkZ
 	end
 
 	if playerChunkZ >= ShiftAreaZ then
-		-- shiftZ = -ShiftAreaZ -- - (ShiftAreaZ - playerChunkZ)
 		shiftX = -playerChunkX
 		shiftZ = -playerChunkZ
 	end
 
 	if playerChunkZ <= -ShiftAreaZ then
-		-- shiftZ = ShiftAreaZ  -- + (ShiftAreaZ - playerChunkZ)
 		shiftX = -playerChunkX
 		shiftZ = -playerChunkZ
 	end
