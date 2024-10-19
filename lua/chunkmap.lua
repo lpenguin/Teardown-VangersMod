@@ -204,13 +204,7 @@ local function UnloadChunk(chunk)
 	if chunk.data == nil then
 		return
 	end
-
-	local body = chunk.data.body
-	local tr = GetBodyTransform(body)
-
-	tr.pos = Vec(tr.pos[1], tr.pos[2] - 512, tr.pos[3])
-	SetBodyTransform(body, tr)
-	SetBodyActive(body, false)
+	SetTag(chunk.data.body, "invisible")
 end
 
 
@@ -219,10 +213,7 @@ local function LoadChunk(chunk)
 	if chunk.data == nil then
 		InstantiateChunk(chunk)
 	else
-		local body = chunk.data.body
-		local tr = GetBodyTransform(body)
-		tr.pos = GetChunkWorldPos(chunk)
-		SetBodyTransform(body, tr)
+		RemoveTag(chunk.data.body, "invisible")
 	end
 
 end
